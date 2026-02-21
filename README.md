@@ -1,14 +1,13 @@
-# astrbot-plugin-helloworld
+# astrbot_plugin_jmcomic
 
-AstrBot 插件模板 / A template plugin for AstrBot plugin feature
+## 前言
 
-> [!NOTE]
-> This repo is just a template of [AstrBot](https://github.com/AstrBotDevs/AstrBot) Plugin.
-> 
-> [AstrBot](https://github.com/AstrBotDevs/AstrBot) is an agentic assistant for both personal and group conversations. It can be deployed across dozens of mainstream instant messaging platforms, including QQ, Telegram, Feishu, DingTalk, Slack, LINE, Discord, Matrix, etc. In addition, it provides a reliable and extensible conversational AI infrastructure for individuals, developers, and teams. Whether you need a personal AI companion, an intelligent customer support agent, an automation assistant, or an enterprise knowledge base, AstrBot enables you to quickly build AI applications directly within your existing messaging workflows.
+基于[hect0x7/JMComic-Crawler-Python: Python API for JMComic | 提供Python API访问禁漫天堂，同时支持网页端和移动端 | 禁漫天堂GitHub Actions下载器🚀](https://github.com/hect0x7/JMComic-Crawler-Python)的astrbot插件
 
-# Supports
+是一个不会python开发彩笔的临时起意制作，因此代码100%AI含量且可能存在较多问题，但经自己测试可以满足日常群内吹水开车使用。若需要拓展功能或优化等请随意~~（话说真的有吗）~~。
 
-- [AstrBot Repo](https://github.com/AstrBotDevs/AstrBot)
-- [AstrBot Plugin Development Docs (Chinese)](https://docs.astrbot.app/dev/star/plugin-new.html)
-- [AstrBot Plugin Development Docs (English)](https://docs.astrbot.app/en/dev/star/plugin-new.html)
+---
+
+## 用法
+
+下载插件后在群内（私聊）向bot发送`JM 350234`即可下载JM350234的本子并自动转成pdf发送
