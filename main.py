@@ -2,6 +2,7 @@ import re
 import asyncio
 import img2pdf
 import jmcomic
+import shutil
 from pathlib import Path
 from datetime import datetime
 from PIL import Image
@@ -11,7 +12,7 @@ from astrbot.api.star import Context, Star, register
 from astrbot.api import logger
 
 
-@register("jmcomic", "Developer", "JM 漫画下载插件", "3.0.1")
+@register("jmcomic", "Developer", "JM 漫画下载插件", "3.1.0")
 class JMPlugin(Star):
 
     def __init__(self, context: Context):
@@ -41,6 +42,7 @@ class JMPlugin(Star):
         loop = asyncio.get_event_loop()
 
         try:
+            # 下载
             await loop.run_in_executor(
                 None,
                 lambda: self._download_logic(comic_id, session_dir)
@@ -54,6 +56,7 @@ class JMPlugin(Star):
 
             pdf_path = session_dir / f"JM_{comic_id}.pdf"
 
+            # 生成 PDF
             await loop.run_in_executor(
                 None,
                 lambda: self._create_pdf(images, pdf_path)
@@ -68,7 +71,6 @@ class JMPlugin(Star):
                 f"✅ JM{comic_id} 下载完成 ({size_mb:.2f}MB)\n正在上传文件..."
             )
 
-            # ===== 正确适配 aiocqhttp =====
             msg_type = event.get_message_type()
 
             if msg_type == "private":
@@ -85,6 +87,13 @@ class JMPlugin(Star):
                     file=abs_path,
                     name=f"JM_{comic_id}.pdf"
                 )
+
+            # ===== 上传成功后清除缓存 =====
+            try:
+                shutil.rmtree(session_dir, ignore_errors=True)
+                logger.info(f"缓存已清理: {session_dir}")
+            except Exception as e:
+                logger.warning(f"缓存清理失败: {e}")
 
         except Exception as e:
             logger.error(f"JMComic 插件异常: {str(e)}", exc_info=True)
