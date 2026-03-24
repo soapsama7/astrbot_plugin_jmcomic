@@ -1,0 +1,6 @@
+name: astrbot_plugin_JMComic
+display_name: JM本子下载
+desc: 方便地下载JM本子，输入车牌号随意发车（
+version: v1.0.0
+author: soapsama
+repo: https://github.com/soapsama7/astrbot_plugin_JMComic
