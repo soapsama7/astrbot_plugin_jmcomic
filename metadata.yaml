@@ -1,6 +1,9 @@
-name: astrbot_plugin_JMComic
+name: astrbot_plugin_jmcomic
 display_name: JM本子下载
 desc: 方便地下载JM本子，输入车牌号随意发车（
-version: v1.0.0
+version: 3.1.0
 author: soapsama
-repo: https://github.com/soapsama7/astrbot_plugin_JMComic
+repo: https://github.com/soapsama7/astrbot_plugin_jmcomic
+astrbot_version: ">=4.16,<5"
+support_platforms:
+  - aiocqhttp

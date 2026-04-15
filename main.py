@@ -46,15 +46,15 @@ def _is_allowed_group(group_id: str | None, config: object) -> bool:
     return str(group_id) in allowed
 
 
-@register("jmcomic", "Developer", "JM 漫画下载插件", "3.1.0")
+@register("jmcomic", "soapsama", "JM 漫画下载插件", "3.1.0")
 class JMPlugin(Star):
 
     def __init__(self, context: Context, config=None):
         super().__init__(context)
         self.config = config
 
-        self.base_dir = Path(__file__).parent
-        self.cache_root = self.base_dir / "cache"
+        # Use AstrBot data directory to avoid cache loss on plugin updates.
+        self.cache_root = Path.cwd() / "data" / "plugin_data" / "astrbot_plugin_jmcomic" / "cache"
         self.cache_root.mkdir(parents=True, exist_ok=True)
 
     @filter.regex(r"^JM\s+(\d+)$", flags=re.IGNORECASE)
